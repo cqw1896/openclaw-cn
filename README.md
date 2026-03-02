@@ -89,6 +89,7 @@ pnpm openclaw-cn onboard --install-daemon
 - [快速开始](https://clawd.org.cn/docs/start/getting-started)
 - [Gateway 配置](https://clawd.org.cn/docs/gateway/configuration)
 - [渠道接入](https://clawd.org.cn/docs/channels)
+- [QQ (OneBot) 插件](https://github.com/Daiyimo/openclaw-napcat) - 由社区贡献
 - [技能开发](https://clawd.org.cn/docs/tools/skills)
 
 ## 🔄 版本同步
