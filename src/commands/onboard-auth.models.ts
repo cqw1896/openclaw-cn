@@ -57,6 +57,23 @@ export const DASHSCOPE_CODING_PLAN_BASE_URL = "https://coding.dashscope.aliyuncs
 export const DASHSCOPE_CODING_PLAN_DEFAULT_MODEL_ID = "qwen2.5-coder-32b-instruct";
 export const DASHSCOPE_CODING_PLAN_DEFAULT_MODEL_REF = `dashscope-coding-plan/${DASHSCOPE_CODING_PLAN_DEFAULT_MODEL_ID}`;
 
+// 阿里云百炼 Coding Plan 支持的模型列表（来自官方文档）
+export const DASHSCOPE_CODING_PLAN_MODELS = [
+  { value: "qwen3.5-plus", label: "qwen3.5-plus         （千问，文本生成 / 深度思考 / 视觉理解）" },
+  { value: "qwen3-max-2026-01-23", label: "qwen3-max-2026-01-23 （千问，文本生成 / 深度思考）" },
+  { value: "qwen3-coder-next", label: "qwen3-coder-next     （千问，文本生成）" },
+  { value: "qwen3-coder-plus", label: "qwen3-coder-plus     （千问，文本生成）" },
+  { value: "glm-5", label: "glm-5                （智谱，文本生成 / 深度思考）" },
+  { value: "glm-4.7", label: "glm-4.7              （智谱，文本生成 / 深度思考）" },
+  { value: "kimi-k2.5", label: "kimi-k2.5            （Kimi，文本生成 / 深度思考 / 视觉理解）" },
+  { value: "MiniMax-M2.5", label: "MiniMax-M2.5         （MiniMax，文本生成 / 深度思考）" },
+  {
+    value: "qwen2.5-coder-32b-instruct",
+    label: "qwen2.5-coder-32b-instruct（千问，文本生成，旧版默认）",
+  },
+  { value: "custom", label: "手动输入模型 ID" },
+] as const;
+
 // 火山引擎 Coding Plan：OpenAI 兼容协议
 export const VOLCENGINE_CODING_PLAN_BASE_URL = "https://ark.cn-beijing.volces.com/api/coding/v3";
 export const VOLCENGINE_CODING_PLAN_DEFAULT_MODEL_ID = "doubao-seed-2.0-code";

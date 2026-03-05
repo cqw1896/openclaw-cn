@@ -7,6 +7,7 @@ Docs: https://clawd.org.cn/
 ### 新功能
 
 - **持久化命令队列**：新增基于 SQLite 的持久化队列后端，支持进程重启后自动静默恢复未完成任务，避免向用户发送「服务已重启，请重新发送」的扰人通知。通过 `queue.mode: "persistent"` 启用，默认保持 `memory` 模式（向后兼容）；`better-sqlite3` 作为可选依赖，未安装时自动降级并给出友好提示。同步修复了队列 drop 策略（`drop: "old"/"summarize"`）在持久化模式下被丢弃的消息重启后「复活」的 bug（#323，感谢 @dragonforce2010）
+- **阿里云百炼 Coding Plan 模型选择优化**：配置向导中的阿里云百炼（Coding Plan）由"使用默认模型 Yes/No"改为完整的模型选择列表，支持官方文档中的全部模型：`qwen3.5-plus`、`qwen3-max-2026-01-23`、`qwen3-coder-next`、`qwen3-coder-plus`（千问系列）、`glm-5`、`glm-4.7`（智谱）、`kimi-k2.5`（Kimi）、`MiniMax-M2.5`（MiniMax），并保留手动输入自定义模型 ID 的选项（#469）
 
 ### bug修复
 

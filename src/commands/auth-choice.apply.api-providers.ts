@@ -68,6 +68,7 @@ import {
   SILICONFLOW_DEFAULT_MODEL_REF,
   DASHSCOPE_DEFAULT_MODEL_REF,
   DASHSCOPE_CODING_PLAN_DEFAULT_MODEL_ID,
+  DASHSCOPE_CODING_PLAN_MODELS,
   DEEPSEEK_DEFAULT_MODEL_REF,
   setSiliconflowApiKey,
   setDashscopeApiKey,
@@ -341,20 +342,21 @@ export async function applyAuthChoiceApiProviders(
       mode: "api_key",
     });
     {
-      const useDefaultModel = await params.prompter.confirm({
-        message: `使用默认模型 (${DASHSCOPE_CODING_PLAN_DEFAULT_MODEL_ID})？`,
-        initialValue: true,
+      const selection = await params.prompter.select({
+        message: "选择阿里云百炼 (Coding Plan) 模型",
+        options: DASHSCOPE_CODING_PLAN_MODELS.map((m) => ({ value: m.value, label: m.label })),
+        initialValue: DASHSCOPE_CODING_PLAN_DEFAULT_MODEL_ID,
       });
 
-      let modelId = DASHSCOPE_CODING_PLAN_DEFAULT_MODEL_ID;
-      if (!useDefaultModel) {
+      let modelId: string;
+      if (selection === "custom") {
         const input = await params.prompter.text({
           message: "输入模型 ID",
           validate: (val) => (String(val).trim().length > 0 ? undefined : "模型 ID 不能为空"),
         });
-        if (typeof input === "string") {
-          modelId = input.trim();
-        }
+        modelId = typeof input === "string" ? input.trim() : DASHSCOPE_CODING_PLAN_DEFAULT_MODEL_ID;
+      } else {
+        modelId = String(selection);
       }
 
       const modelRef = `dashscope-coding-plan/${modelId}`;
