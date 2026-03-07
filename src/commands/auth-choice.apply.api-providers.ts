@@ -1110,6 +1110,67 @@ export async function applyAuthChoiceApiProviders(
     return { config: nextConfig, agentModelOverride };
   }
 
+  if (authChoice === "ollama-local") {
+    let nextConfig = params.config;
+
+    const baseUrlRaw = await params.prompter.text({
+      message: "Ollama 服务地址",
+      initialValue: "http://127.0.0.1:11434",
+      placeholder: "http://127.0.0.1:11434",
+    });
+    const baseUrl = String(baseUrlRaw).trim();
+
+    const modelIdRaw = await params.prompter.text({
+      message: "模型 ID (例如 'deepseek-r1:8b')",
+      validate: (value) =>
+        value && String(value).trim().length > 0 ? undefined : "模型 ID 不能为空",
+    });
+    const modelId = String(modelIdRaw);
+
+    nextConfig = applyCustomProviderConfig(nextConfig, {
+      providerId: "ollama",
+      protocol: "openai-completions",
+      baseUrl,
+      modelId,
+    });
+
+    // Override api to "ollama" (native protocol)
+    const providers = { ...nextConfig.models?.providers };
+    if (providers.ollama) {
+      providers.ollama = { ...providers.ollama, api: "ollama" };
+      nextConfig = {
+        ...nextConfig,
+        models: { ...nextConfig.models, providers },
+      };
+    }
+
+    const modelRef = `ollama/${modelId}`;
+
+    if (params.setDefaultModel) {
+      const currentModel = nextConfig.agents?.defaults?.model;
+      const newModelConfig =
+        currentModel && typeof currentModel === "object"
+          ? { ...currentModel, primary: modelRef }
+          : { primary: modelRef };
+      nextConfig = {
+        ...nextConfig,
+        agents: {
+          ...nextConfig.agents,
+          defaults: {
+            ...nextConfig.agents?.defaults,
+            model: newModelConfig,
+          },
+        },
+      };
+      await params.prompter.note(`默认模型已设置为 ${modelRef}`, "Ollama 配置完成");
+    } else {
+      agentModelOverride = modelRef;
+      await noteAgentModel(modelRef);
+    }
+
+    return { config: nextConfig, agentModelOverride };
+  }
+
   if (authChoice === "custom-provider-api-key") {
     let nextConfig = params.config;
 

@@ -53,6 +53,7 @@ const PREFERRED_PROVIDER_BY_AUTH_CHOICE: Partial<Record<AuthChoice, string>> = {
   "minimax-portal": "minimax-portal",
   "qianfan-api-key": "qianfan",
   "custom-provider-api-key": "custom-provider",
+  "ollama-local": "ollama",
 };
 
 export function resolvePreferredProviderForAuthChoice(choice: AuthChoice): string | undefined {

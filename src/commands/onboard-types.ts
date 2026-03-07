@@ -53,6 +53,7 @@ export type AuthChoice =
   | "minimax-api-key"
   // 新增：自定义模型（OpenAI/Anthropic兼容）
   | "custom-provider-api-key"
+  | "ollama-local"
   | "minimax-portal"
   | "opencode-zen"
   | "github-copilot"

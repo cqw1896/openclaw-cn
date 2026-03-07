@@ -28,6 +28,7 @@ export type AuthChoiceGroupId =
   | "dashscope"
   | "deepseek"
   | "volcengine"
+  | "ollama"
   | "custom";
 
 export type AuthChoiceGroup = {
@@ -71,6 +72,12 @@ const AUTH_CHOICE_GROUP_DEFS: {
       "kimi-code-api-key",
       "moonshot-coding-plan-api-key",
     ],
+  },
+  {
+    value: "ollama",
+    label: "Ollama (本地)",
+    hint: "本地运行的 Ollama 服务",
+    choices: ["ollama-local"],
   },
   {
     value: "custom",
@@ -277,6 +284,11 @@ export function buildAuthChoiceOptions(params: {
     value: "volcengine-coding-plan-api-key",
     label: "火山引擎 (Coding Plan)",
     hint: "OpenAI 兼容协议",
+  });
+  options.push({
+    value: "ollama-local",
+    label: "Ollama (本地)",
+    hint: "http://127.0.0.1:11434",
   });
   options.push({
     value: "custom-provider-api-key",
