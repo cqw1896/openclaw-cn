@@ -13,7 +13,7 @@ const meta: ChannelMeta = {
   selectionLabel: "QQ (社区版)",
   docsPath: "/channels/qqbot",
   docsLabel: "qqbot",
-  blurb: "QQ 频道/群机器人，通过社区版 aqbot 接入。",
+  blurb: "QQ 频道/群机器人，通过社区版 qqbot 接入。",
   aliases: ["qq", "qq-bot"],
   order: 50,
 };

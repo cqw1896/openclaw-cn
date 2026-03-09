@@ -109,7 +109,7 @@ const CHAT_CHANNEL_META: Record<ChatChannelId, ChannelMeta> = {
     detailLabel: "QQ 机器人",
     docsPath: "/channels/qqbot",
     docsLabel: "qqbot",
-    blurb: "QQ 频道/群机器人，通过社区版 aqbot 接入。",
+    blurb: "QQ 频道/群机器人，通过社区版 qqbot 接入。",
     systemImage: "message",
   },
   slack: {
