@@ -38,7 +38,7 @@ Docs: https://clawd.org.cn/
 
 ### QQ 机器人渠道支持
 
-- **新增 QQ 渠道（`@sliverp/aqbot`）**：新增 QQ 机器人渠道插件 `@openclaw-cn/qqbot`，通过社区版 `aqbot` 接入 QQ 频道/群机器人。配置向导支持交互式设置必填项：`appId`（QQ 机器人 AppID）、`clientSecret`（AppSecret）；配置完成后自动在 `channels.qqbot` 写入凭证
+- **新增 QQ 渠道（`@sliverp/qqbot`）**：新增 QQ 机器人渠道插件 `@openclaw-cn/qqbot`，通过社区版 `qqbot` 接入 QQ 频道/群机器人。配置向导支持交互式设置必填项：`appId`（QQ 机器人 AppID）、`clientSecret`（AppSecret）；配置完成后自动在 `channels.qqbot` 写入凭证
 
 ### bug修复
 
