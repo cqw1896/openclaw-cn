@@ -103,9 +103,17 @@ async function promptInstallChoice(params: {
         },
       ]
     : [];
+  // Hide the community npm option when npmSpec is the same as officialSpec
+  // (i.e. no separate community build exists for this channel).
+  const hasSeparateNpm =
+    !entry.install.officialSpec ||
+    entry.install.npmSpec.trim() !== entry.install.officialSpec.trim();
+  const npmOptions: Array<{ value: InstallChoice; label: string; hint?: string }> = hasSeparateNpm
+    ? [{ value: "npm", label: `中文社区版 (${entry.install.npmSpec})` }]
+    : [];
   const options: Array<{ value: InstallChoice; label: string; hint?: string }> = [
     ...officialOptions,
-    { value: "npm", label: `中文社区版 (${entry.install.npmSpec})` },
+    ...npmOptions,
     ...localOptions,
     { value: "skip", label: "暂时跳过" },
   ];

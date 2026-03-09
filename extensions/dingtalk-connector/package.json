@@ -70,9 +70,9 @@
       "order": 40
     },
     "install": {
-      "npmSpec": "@openclaw-cn/dingtalk-connector@^0.1.0",
-      "officialSpec": "dingtalk-real-ai/dingtalk-connector",
-      "defaultChoice": "npm"
+      "npmSpec": "@dingtalk-real-ai/dingtalk-connector",
+      "officialSpec": "@dingtalk-real-ai/dingtalk-connector",
+      "defaultChoice": "official"
     }
   }
 }
